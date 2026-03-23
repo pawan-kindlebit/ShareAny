@@ -1,0 +1,139 @@
+package com.my.apps.share.tools
+
+import android.app.Activity
+import android.content.Context
+import android.content.res.ColorStateList
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.graphics.drawable.GradientDrawable
+import android.view.View
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.RemoteViews
+import com.my.apps.share.ConnectionActivity
+import com.my.apps.share.R
+import com.my.apps.share.SessionActivity
+import com.google.android.material.color.DynamicColors
+import com.google.android.material.elevation.SurfaceColors
+
+
+object DynamicTheme {
+
+  private val HAS_DYNAMIC_THEMING = DynamicColors.isDynamicColorAvailable()
+
+
+  fun applyNavigationBarTheme(activity: Activity) {
+    activity.window.navigationBarColor = SurfaceColors.SURFACE_2.getColor(activity)
+  }
+
+  fun setColorOfStatusBar(activity: Activity) {
+    if (!HAS_DYNAMIC_THEMING) return
+
+    activity.window.statusBarColor = activity.getColor(
+      if (isDarkModeEnabled(activity.resources))
+        com.google.android.material.R.color.material_dynamic_neutral10
+      else com.google.android.material.R.color.material_dynamic_neutral99
+    )
+  }
+
+  private fun isDarkModeEnabled(resources: Resources): Boolean {
+    val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+    return currentNightMode == Configuration.UI_MODE_NIGHT_YES
+  }
+
+  fun themeOfHomeActivity(view: View, activity: Activity) {
+    if (!HAS_DYNAMIC_THEMING) return
+
+    applyNavigationBarTheme(activity)
+
+    val qrImageView = view.findViewById<ImageView>(R.id.qr_image)
+    qrImageView.backgroundTintList = ColorStateList.valueOf(
+      activity.getColor(
+        com.google.android.material.R.color.material_dynamic_neutral_variant60
+      )
+    )
+  }
+
+  fun themeOfSessionActivity(session: SessionActivity) {
+    if (!HAS_DYNAMIC_THEMING) return
+    val imageAdd = session.findViewById<ImageView>(R.id.image_add)
+
+    imageAdd.backgroundTintList = ColorStateList.valueOf(
+      session.getColor(
+        com.google.android.material.R.color.material_dynamic_neutral_variant50
+      )
+    )
+
+    val speedLabelFrame = session.findViewById<FrameLayout>(R.id.speed_label_frame)
+    setSpecialBorderTheme(session, speedLabelFrame)
+  }
+
+  fun setSpecialBorderTheme(context: Context, layout: FrameLayout) {
+    val drawableSpeed = layout.background as GradientDrawable
+    drawableSpeed.mutate()
+
+    drawableSpeed.setStroke(
+      2, context.getColor(
+        com.google.android.material.R.color.material_dynamic_neutral_variant40
+      ), 6f, 7f
+    )
+  }
+
+  fun themeOfNoConnectionActivity(connection: ConnectionActivity) {
+    if (!HAS_DYNAMIC_THEMING)
+      return
+    val alertIcon = connection.findViewById<ImageView>(R.id.alert_icon)
+
+    alertIcon.backgroundTintList = ColorStateList.valueOf(
+      connection.getColor(
+        com.google.android.material.R.color.material_dynamic_primary80
+      )
+    )
+  }
+
+  fun neutralCardColor(context: Context): Int {
+    return context.getColor(
+      if (HAS_DYNAMIC_THEMING) {
+        com.google.android.material.R.color.material_dynamic_neutral_variant20
+      } else {
+        R.color.card_view_background
+      }
+    )
+  }
+
+  fun variant60Color(context: Context): Int {
+    return context.getColor(
+      if (HAS_DYNAMIC_THEMING) {
+        com.google.android.material.R.color.material_dynamic_neutral_variant60
+      } else {
+        R.color.alt_variant_60
+      }
+    )
+  }
+
+  fun variant70Color(context: Context): Int {
+    return context.getColor(
+      if (HAS_DYNAMIC_THEMING) {
+        com.google.android.material.R.color.material_dynamic_neutral_variant70
+      } else {
+        R.color.alt_variant_dark
+      }
+    )
+  }
+
+  fun variant80Color(context: Context): Int {
+    return context.getColor(
+      if (HAS_DYNAMIC_THEMING) {
+        com.google.android.material.R.color.material_dynamic_primary80
+      } else {
+        R.color.alt_variant_dark
+      }
+    )
+  }
+
+  fun getProgressBar(context: Context): RemoteViews {
+    if (HAS_DYNAMIC_THEMING)
+      return RemoteViews(context.packageName, R.layout.notification_progress_mtr)
+    return RemoteViews(context.packageName, R.layout.notification_progress)
+  }
+}

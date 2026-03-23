@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/session_layout"
+    android:keepScreenOn="true"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context=".SessionActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:text="Session"
+                android:textSize="40sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    app:cardElevation="1dp"
+                    app:contentPadding="5dp"
+                    android:layout_height="wrap_content"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:id="@+id/disconnect_button"
+                            app:icon="@drawable/ic_disconnect"
+                            android:fontFamily="@font/inter"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"/>
+
+                        <TextView
+                            android:id="@+id/transfer_speed"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textStyle="bold"
+                            android:layout_marginEnd="5dp"
+                            android:textAlignment="textEnd"
+                            android:fontFamily="@font/inter"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:text="Connected to **" />
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/progress_frame"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="wrap_content"
+                app:trackThickness="8dp"
+                app:trackCornerRadius="10dp"
+                android:id="@+id/progress_bar"
+                app:indicatorSize="200dp"
+                android:progress="0"
+                android:layout_height="wrap_content"/>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/progress_card"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:cardCornerRadius="360dp"
+                app:contentPadding="70dp">
+
+                <ImageView
+                    android:id="@+id/image_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/file_earmark_zip"
+                    android:backgroundTint="@color/alt_variant_60" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hold to cancel"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="30dp"
+            app:contentPadding="5dp"
+            app:strokeWidth="0dp"
+            android:layout_gravity="center"
+            app:cardElevation="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/file_name"
+                    android:layout_margin="10dp"
+
+                    android:fontFamily="@font/inter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No files being received"/>
+
+                <FrameLayout
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+
+                    android:id="@+id/speed_label_frame"
+                    android:layout_gravity="center"
+                    app:strokeWidth="0dp"
+                    android:background="@drawable/dotted_border"
+                    android:padding="10dp"
+                    app:cardElevation="1dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/file_size"
+
+                        android:fontFamily="@font/inter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(> ^_^)>"/>
+                </FrameLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            app:cardElevation="1dp"
+            app:contentPadding="10dp"
+            app:strokeWidth="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:text="Tap the '+' icon to send files" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_files"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/plus_lg"
+        android:contentDescription="Send file button" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

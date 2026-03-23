@@ -1,0 +1,40 @@
+package com.my.apps.share.core.transfer;
+
+import java.util.Arrays;
+
+public class ChannelInfo {
+
+  public static final ChannelInfo FILE_REQUEST_CHANNEL_INFO = new ChannelInfo((byte) 1);
+  public static final ChannelInfo CANCEL_REQUEST_CHANNEL_INFO = new ChannelInfo((byte) 2);
+  public static final ChannelInfo SMALL_DATA_EXCHANGE_CHANNEL_INFO = new ChannelInfo((byte) 3);
+
+  private final byte[] channel;
+
+  public ChannelInfo(byte[] channel) {
+    if (channel.length != Info.CHANNEL_SIZE)
+      throw new IllegalArgumentException("Wrong channel size");
+    this.channel = channel;
+  }
+
+  public ChannelInfo(byte b) {
+    channel = new byte[Info.CHANNEL_SIZE];
+    channel[0] = b;
+  }
+
+  public byte[] bytes() {
+    return channel;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ChannelInfo channelInfo1 = (ChannelInfo) o;
+    return Arrays.equals(channel, channelInfo1.channel);
+  }
+
+  @Override
+  public int hashCode() {
+    return Arrays.hashCode(channel);
+  }
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight=".1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:fontFamily="@font/source_sans_pro_bold"
+                    android:text="ShareAny"
+                    android:textSize="55sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="?attr/materialIconButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/scanButton"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:iconSize="30dp"
+                    app:icon="@drawable/upc_scan" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/device_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/inter"
+                android:text="**"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/qr_image"
+                android:layout_width="330dp"
+                android:layout_height="340dp"
+                android:backgroundTint="@color/alt_variant_60"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter"
+                android:text="Scan the code above from another device to connect."
+                android:textAlignment="center" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:cardElevation="1dp"
+                app:contentPadding="10dp"
+                app:strokeWidth="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
+                    android:text="Ensure both devices are on the same network, such as a hotspot or Wi-Fi." />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
