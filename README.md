@@ -11,7 +11,7 @@
 ## Preview
 
 <p align="center">
-  <img src="promo/first.png" width="80%" />
+  <img src="promo/fisrt.png" width="80%" />
 </p>
 
 <p align="center">
