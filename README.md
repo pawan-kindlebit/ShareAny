@@ -1,7 +1,7 @@
 ## 📦 ShareAny
 
 <div align="center">
-    <img src="./app/src/main/ic_launcher-playstore.png" width="120" height="120" />
+    <img src="promo/images.png" width="120" height="120" />
     <h3>Fast & Simple File Sharing over Local Network</h3>
     <p>Free and open-source Android app to share files seamlessly without internet.</p>
 </div>
@@ -11,7 +11,7 @@
 ## Preview
 
 <p align="center">
-  <img src="promo/fisrt.png" width="80%" />
+  <img src="promo/fisrt.png" width="50%" />
 </p>
 
 <p align="center">
