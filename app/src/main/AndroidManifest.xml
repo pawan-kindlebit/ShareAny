@@ -67,6 +67,7 @@
             android:name=".core.files.FileRequestService"
             android:exported="false"
             android:process=":doraemon" />
+
         <service
             android:name=".core.files.FileReceiveService"
             android:exported="false"
